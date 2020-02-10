@@ -34,7 +34,7 @@
             transform-origin: right bottom;
             /*transition: .3s;*/
             animation-name: cuadrado;
-            animation-duration: 1s ;
+            animation-duration: 3s ;
             animation-delay: 1s;
             /*animation-iteration-count: infinite;*/
             animation-iteration-count: infinite;
@@ -46,6 +46,14 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            /*animation-timing-function: ease-in;*/
+            /*animation-timing-function: ease-out;*/
+            /*animation-timing-function: ease-in-out;*/
+            /*animation-timing-function: linear;*/
+            /*animation-timing-function: steps(5);*/
+            animation-timing-function: cubic-bezier(.76,-0.46,.24,1.47)
+
+
                     }
 
         @keyframes cuadrado {
