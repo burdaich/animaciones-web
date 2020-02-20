@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transformacion Origin</title>
+    <style>
+        body {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            height: 100vh;
+            color: white;
+            font-family: Arial;
+        }
+
+        .container {
+            width: 100%;
+            border: 1px solid red;
+
+        }
+
+        .container:hover .cuadrado {
+            animation-play-state: paused;
+        }
+
+        .cuadrado {
+            width: 200px;
+            height: 200px;
+            background: red;
+            margin: 20px;
+            transform-origin: right bottom;
+            /*transition: .3s;*/
+            /*animation-name: cuadrado, rebote !*rebote*!;*/
+            animation-duration: 3s, .3s;
+            /*animation-delay: 1s;*/
+            /*animation-iteration-count: infinite;*/
+            animation-iteration-count: infinite, 20;
+            animation-timing-function: linear, ease-in-out;
+            animation-direction: alternate;
+            /*animation-fill-mode: forwards;*/
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            /*animation-timing-function: ease-in;*/
+            /*animation-timing-function: ease-out;*/
+            /*animation-timing-function: ease-in-out;*/
+            /*animation-timing-function: linear;*/
+            /*animation-timing-function: steps(5);*/
+            /*animation-timing-function: cubic-bezier(.76, -0.46, .24, 1.47)*/
+            transition: 3s;
+            will-change: opacity,transform;
+        }
+
+        .cuadrado:hover{
+            opacity: 0;
+            transform: scale(2);
+        }
+
+        @keyframes cuadrado {
+            0% {
+                left: 0;
+            }
+
+            100% {
+                left: calc(100% - 240px);
+            }
+        }
+
+        @keyframes escalera {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(500px);
+            }
+
+
+        }
+
+        @keyframes rebote {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(100px) scale(1, .9);
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="cuadrado" id="cuadrado">
+        Hola mundo!
+    </div>
+</div>
+<script>
+    const cuadrado = document.getElementById('cuadrado');
+    cuadrado.addEventListener('animationend', (event) => {
+        if (event.animationName === 'rebote') {
+            cuadrado.style.animationName = 'cuadrado,escalera';
+            cuadrado.style.animationDuration = '3s, 3s';
+        }
+    })
+</script>
+</body>
+</html>
